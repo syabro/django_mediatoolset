@@ -3,7 +3,7 @@ from distutils.core import setup
 __version__ = "0.1.1"
 
 setup(
-    name='django_mediatoolset',
+    name='django-mediatoolset',
     version=__version__,
     description='Useful tools to work with media',
     packages=['mediatoolset', 'mediatoolset.management', 'mediatoolset.management.commands'],
