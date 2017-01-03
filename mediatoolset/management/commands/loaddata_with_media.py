@@ -23,9 +23,11 @@ class Command(LoaddataCommand):
         fields = [field for field in type(object_from_fixture)._meta.get_fields() if isinstance(field, FileField)]
         for field in fields:
             relative_file_path = getattr(object_from_fixture, field.name).name
+            if not relative_file_path:
+                continue
             src_path = os.path.join(fixture_dir, 'media', relative_file_path)
             if not os.path.exists(src_path):
-                print "Source files %s doesn't exist. Skipping."
+                print "Source files %s doesn't exist. Skipping." % src_path
                 continue
 
             target_path = os.path.join(settings.MEDIA_ROOT, relative_file_path)
